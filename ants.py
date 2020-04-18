@@ -1,4 +1,5 @@
 from random import randint, uniform
+from datetime import datetime
 
 grid = []
 a = None
@@ -117,4 +118,10 @@ def draw():
         for j in range(height):
             if grid[i][j] == 1:
                 point(i,j)
-                
+
+def keyPressed():
+    if (key == 's'):
+        now = datetime. now()
+        time = now.strftime("%H-%M-%S")
+        print("Saving image as cellular-{}.png".format(time))
+        saveFrame("cellular-{}.png".format(time))
