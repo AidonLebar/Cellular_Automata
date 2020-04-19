@@ -31,8 +31,8 @@ def get_value(x, y):
 def get_neighborhood(x, y):
     n = 0
     c = 8
-    for i in range(-2,1):
-        for j in range(-2,1):
+    for i in range(-1,2):
+        for j in range(-1,2):
             n += get_value(x + i, y + j) << c
             c -= 1
     return n
@@ -51,7 +51,7 @@ def setup():
                 grid[i].append(0)
             else:
                 grid[i].append(1)
-    for i in range(511):
+    for i in range(512):
         p = uniform(0,1)
         if p < 0.25:
             rules[i] = flip

@@ -13,6 +13,14 @@ def flip(x, y):
     else:
         grid[x][y] = 0
 
+def flip_one(x, y):
+    global grid
+    grid[x][y] = 1
+
+def flip_zero(x, y):
+    global grid
+    grid[x][y] = 0 
+
 def no_flip(x, y):
     pass
 
@@ -32,7 +40,7 @@ class ant():
     def __init__(self):
         self.move_actions[0] = self.forward
         self.grid_actions[0] = flip
-        for i in range(1,255):
+        for i in range(1,512):
             p1 = uniform(0,1)
             if p1 < 0.1:
                 self.move_actions[i] = self.forward
@@ -41,8 +49,12 @@ class ant():
             else:
                 self.move_actions[i] = self.turn_left
             p2 = uniform(0,1)
-            if p2 < 0.5:
+            if p2 < 0.25:
                 self.grid_actions[i] = flip
+            elif p2 < 0.5:
+                self.grid_actions[i] = flip_one
+            elif p2 < 0.75:
+                self.grid_actions[i] = flip_zero
             else:
                 self.grid_actions[i] = no_flip
 
@@ -88,9 +100,9 @@ class ant():
     
 def get_neighborhood(x, y):
     n = 0
-    c = 7
-    for i in range(-1,1):
-        for j in range(-1,1):
+    c = 8
+    for i in range(-1,2):
+        for j in range(-1,2):
             n += get_value(x + i, y + j) << c
             c -= 1
     return n
