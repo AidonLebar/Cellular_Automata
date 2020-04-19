@@ -30,8 +30,8 @@ def get_value(x, y):
     
 def get_neighborhood(x, y):
     n = 0
-    for i in range(-1,1):
-        for j in range(-1,1):
+    for i in range(-2,1):
+        for j in range(-2,1):
             n += get_value(x + i, y + j)
     return n
 
