@@ -1,2 +1,2 @@
 # Cellular_Automata
-A cellular automata that draws nice pictures using processing.py
+A collection of cellular automata that draw nice pictures using processing.py
